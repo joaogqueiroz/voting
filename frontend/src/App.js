@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends React.Component{
+  constructor(){
+    super();
+
+    this.state = {
+      candidates: [],
+    }; 
+
+  }
+
+  render(){
+    const {candidates} = this.state;
+
+    if (candidates.length === 0){
+      return <p>Loading...</p>;
+    }
+
+    return(
+      <ul>
+        {candidates.map((candidate) =>{
+          const{ id, name, votes, percentage } = candidate;
+          return (
+            <li key = {id}>
+              {name} | {votes} | {percentage}
+              </li>
+            );
+        })}
+      </ul>
+    );
+  }
+  async componentDidMount(){
+    setInterval(async() =>{
+      const res = await fetch('http://localhost:8080/votes');
+      const json = await res.json();
+  
+      this.setState({
+        candidates: json.candidates,
+      });
+    }, 1000);
+
+  }
 }
-
-export default App;
