@@ -11,19 +11,19 @@ function fillCandidates(){
     candidates = [
         {
             id: 1,
-            name: 'Marco Minnemann',
+            name: 'Corey Taylor',
             votes: 0,
             percentage: 0,
         },
         {
             id: 2,
-            name: 'Mike Portnoy',
+            name: 'Chester Bennington',
             votes: 0,
             percentage: 0,
         },
         {
             id: 3,
-            name: 'Neil Peart',
+            name: 'Chris Cornell',
             votes: 0,
             percentage: 0,
         }
