@@ -58,7 +58,6 @@ app.get('/votes', (req, res)=> {
     res.json({candidates: sortedCandidates});
 });
 
-
 app.listen(8080);
 
 fillCandidates();
